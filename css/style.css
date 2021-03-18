@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Roboto;
+  position: relative;
+  background: linear-gradient(
+    to right,
+    #ffffff,
+    #fffbf0
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.loader {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar.navbar-dark {
+  background-color: #000916;
+}
+
+.banner-area {
+  height: 800px;
+  width: 100%;
+  background: url('../assets/hero.jpg') center center / cover no-repeat;
+}
+
+.banner-area .overlay {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.banner-area .banner-content,
+.banner-area .container {
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+}
+
+.convert-area {
+  margin-top: -200px;
+  z-index: 10;
+}
+
+.convert-wrap {
+  background-color: #000916;
+}
+
+.table td {
+  vertical-align: middle;
+}
