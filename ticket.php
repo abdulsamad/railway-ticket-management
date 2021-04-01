@@ -37,7 +37,7 @@
 	<div class="d-none" id="main">
 		<nav id="navbar" class="navbar navbar-expand-lg navbar-dark">
 			<div class="container">
-				<a class="navbar-brand" href="./index.php">RailMumbai</a>
+				<a class="navbar-brand" href="index.php">RailMumbai</a>
 			</div>
 		</nav>
 
