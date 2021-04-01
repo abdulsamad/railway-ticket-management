@@ -1,10 +1,40 @@
 <?php
 	require ("./db/conn.php");
+   require ('./config.php');
+	require ('razorpay-php/Razorpay.php');
    session_start();
 
    if(!isset($_SESSION['uidorPhone'])){
-     header('Location: index.php');
+      header('Location: index.php');
    }
+
+	use Razorpay\Api\Api;
+   
+	$api = new Api($keyId, $keySecret);
+	$orderData = [
+		'receipt'         => 3456,
+		'amount'          => mt_rand(10, 1000) * 100,
+		'currency'        => 'INR',
+		'payment_capture' => 1
+	];
+	$razorpayOrder = $api->order->create($orderData);
+	$razorpayOrderId = $razorpayOrder['id'];
+	$_SESSION['razorpay_order_id'] = $razorpayOrderId;
+	$displayAmount = $amount = $orderData['amount'];
+	$data = [
+		"key"               => $keyId,
+		"amount"            => $amount,
+		"name"              => "Rail Mumbai",
+		"description"       => "Dummy Mumbai railway ticket booking site.",
+		"image"             => "https://source.unsplash.com/60x60/?railway",
+		"notes"             => [
+		"address"           => "New Street, Old House, Random Colony",
+		"merchant_order_id" => "12312321",
+		],
+		"order_id"          => $razorpayOrderId,
+	];
+
+	$json = json_encode($data);
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +48,10 @@
    <link rel="shortcut icon" href="assets/favicon.png">
    <link rel="stylesheet" href="css/bootstrap.min.css">
    <link rel="stylesheet" href="css/style.css">
+   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+   <script>
+      const options = <?php echo $json?>;
+   </script>
 </head>
 
 <body>
@@ -75,10 +109,12 @@
          </div>
       </section>
 
-      <!-- Start convert Area: Journey -->
+      <!-- Start convert Area: Ticket -->
       <section class="convert-area mb-5 position-relative" id="ticket">
          <div class="container">
-            <form action="bookticket.php" method="post">
+            <form name="razorpayticketform" action="bookticket.php" method="POST">
+               <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id_ticket">
+               <input type="hidden" name="razorpay_signature"  id="razorpay_signature_ticket" >
                <div class="convert-wrap p-5">
                   <div class="row justify-content-center align-items-center flex-column mb-3">
                      <h2 class="text-white">Journey Details</h2>
@@ -103,7 +139,7 @@
                            </label>
                         </div>
                         <div class="form-group mb-3 mt-2">
-                           <input type="number" name="number" class="form-control" placeholder="Number Of Ticket" required>
+                           <input type="number" name="number" class="form-control" placeholder="Number Of Ticket" value="1" required>
                         </div>
                         <div class="form-group">
                            <label for="via">Via</label>
@@ -135,10 +171,10 @@
                            </label>
                         </div>
                         <div class="form-group mb-3 mt-2">
-                           <input type="text" name="boarding_time" class="form-control mb-2 mt-2"
+                           <input type="datetime-local" name="boarding_time" class="form-control mb-2 mt-2"
                               placeholder="Boarding Time (e.g HH:MM:SS)" required>
-                        </div>
-                        <button type="submit" class="btn btn-success btn-block my-5">Book Now</button>
+                        </div>                        
+                        <button class="btn btn-success btn-block my-5" id="rzp-ticket-button">Book Now</button>
                      </div>
                      <br>
                   </div>
@@ -150,7 +186,9 @@
       <!-- Start convert Area: Pass -->
       <section class="simple-service-area mb-5" id="pass">
          <div class="container">
-            <form action="bookpass.php" method="POST">
+            <form name="razorpaypassform" action="bookpass.php" method="POST">
+               <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id_pass">
+               <input type="hidden" name="razorpay_signature"  id="razorpay_signature_pass" >
                <div class="convert-wrap p-5">
                   <div class="row justify-content-center align-items-center flex-column mb-3">
                      <h2 class="text-white">Pass Details</h2>
@@ -204,7 +242,7 @@
                               Quaterly
                            </label>
                         </div>
-                        <button type="submit" class="btn btn-success btn-block my-5">Book Now</button>
+                        <button class="btn btn-success btn-block my-5" id="rzp-pass-button">Book Now</button>
                      </div>
                      <br>
                   </div>
@@ -248,9 +286,10 @@
             </div>
       </section>
    </div>
-
    <script src="js/jquery.min.js"></script>
    <script src="js/bootstrap.min.js"></script>
+   <script src="js/bookticket.js"></script>
+   <script src="js/bookpass.js"></script>
    <script src="js/main.js"></script>
 </body>
 
