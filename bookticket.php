@@ -16,15 +16,10 @@
 
 	$error = "Payment Failed";
 
-	if (empty($_POST['razorpay_payment_id']) === false)
-	{
+	if (empty($_POST['razorpay_payment_id']) === false){
 			$api = new Api($keyId, $keySecret);
 
-			try
-			{
-					// Please note that the razorpay order ID must
-					// come from a trusted source (session here, but
-					// could be database or something else)
+			try {
 					$attributes = array(
 							'razorpay_order_id' => $_SESSION['razorpay_order_id'],
 							'razorpay_payment_id' => $_POST['razorpay_payment_id'],
@@ -32,9 +27,7 @@
 					);
 
 					$api->utility->verifyPaymentSignature($attributes);
-			}
-			catch(SignatureVerificationError $e)
-			{
+			} catch(SignatureVerificationError $e) {
 					$success = false;
 					$error = 'Razorpay Error : ' . $e->getMessage();
 			}
@@ -56,17 +49,17 @@
 			$sql = "INSERT INTO ticketbooking (uid, source, destination, via, class, type, no_of_ticket, fare, boarding_time, booking_time, barcode) VALUES ('$uid', '$source', '$destination', '$via', '$class', '$type', '$number', 255, '$boardingtime', '$currentTime', '$uniqueTicketNo')";
 	
 			if ($conn->query($sql) === TRUE) {
-				$html = true;
+				$queryResult = true;
 			} else {
 				$error = "Error: " . $sql . "<br>" . $conn->error;
-				$html = true;
+				$queryResult = true;
 			}
 		} else {
 			header('Location: index.php');
 			die("Sorry! Please enter all your details properly.");
 		}
 	} else{
-		$html = false;
+		$queryResult = false;
 	}
 ?>
 
@@ -77,8 +70,47 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Ticket Confirmation</title>
+	<link rel="shortcut icon" href="assets/favicon.png">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>	
-  <?php echo $html ? 'Ticket Booking Success' : 'Ticket Booking Failed' ?>
+
+	<div class="loader" id="loader">
+		<div class="spinner-border text-success" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+	</div>
+	
+	<div class="d-none" id="main">
+		<nav id="navbar" class="navbar navbar-expand-lg navbar-dark">
+			<div class="container">
+				<a class="navbar-brand" href="index.php">RailMumbai</a>
+			</div>
+		</nav>
+
+		<div class="container my-2">
+			<a href="./index.php" class="btn btn-primary mt-3 d-inline-flex align-items-center justify-content-center">
+				<svg width="24" height="24" fill-rule="evenodd" clip-rule="evenodd" fill="#fff"><path d="M2.117 12l7.527 6.235-.644.765-9-7.521 9-7.479.645.764-7.529 6.236h21.884v1h-21.883z"/></svg>
+				&nbsp;&nbsp;Back
+			</a>
+			<h1 class="text-center my-3">Ticket</h1>
+			<div class="jumbotron text-light <?php echo $queryResult ? 'bg-success' : 'bg-danger' ?>">
+				<div class="text-center">
+					<img class="mx-auto" src="<?php echo $queryResult ? './assets/success.gif' : './assets/fail.gif' ?>" alt="">
+					<h2 class="mt-4">
+						<?php echo $queryResult ? 'Ticket Booking Success' : 'Ticket Booking Failed' ?>
+					</h2>
+				</div>
+				<div class="my-2 text-center">
+					<a href="ticket.php?id=<?php echo $uniqueTicketNo ?>" class="btn btn-primary mt-4">Show Ticket</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>
