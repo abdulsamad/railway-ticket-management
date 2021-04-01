@@ -2,6 +2,10 @@
 	require ("./db/conn.php");
 	session_start();
 
+	if(isset($_SESSION['uidorPhone'])){
+		header('Location: user.php');
+	}
+
 	if (isset($_POST['uidorPhone']) && isset($_POST['password'])){
 		$uidorPhone = stripslashes($_POST['uidorPhone']);
 		$uidorPhone = mysqli_real_escape_string($conn,$uidorPhone); 
@@ -44,7 +48,7 @@
 	<div class="d-none" id="main">
 		<nav id="navbar" class="navbar navbar-expand-lg navbar-dark">
 			<div class="container">
-				<a class="navbar-brand" href="#">RailMumbai</a>
+				<a class="navbar-brand" href="index.php">RailMumbai</a>
 			</div>
 		</nav>
 
