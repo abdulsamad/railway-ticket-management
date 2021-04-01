@@ -75,7 +75,7 @@
          </div>
       </section>
 
-      <!-- Start convert Area -->
+      <!-- Start convert Area: Journey -->
       <section class="convert-area mb-5 position-relative" id="ticket">
          <div class="container">
             <form action="bookticket.php" method="post">
@@ -147,7 +147,7 @@
          </div>
       </section>
 
-      <!-- Start convert Area -->
+      <!-- Start convert Area: Pass -->
       <section class="simple-service-area mb-5" id="pass">
          <div class="container">
             <form action="bookpass.php" method="POST">
