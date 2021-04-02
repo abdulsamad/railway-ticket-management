@@ -200,17 +200,17 @@
                            <label for="source">Source</label>
                            <input type="text" name="source" class="form-control" id="source" placeholder="Source" required>
                         </div>
-                        <p>Type</p>
+                        <p>Class</p>
                         <div class="form-check form-check-inline">
-                           <input class="form-check-input" type="radio" name="type" id="pass-single" value="1" checked>
+                           <input class="form-check-input" type="radio" name="class" id="pass-single" value="1" checked>
                            <label class="form-check-label" for="pass-single">
-                              Single
+                              First
                            </label>
                         </div>
                         <div class="form-check form-check-inline mb-3">
-                           <input class="form-check-input" type="radio" name="type" id="pass-return" value="2">
+                           <input class="form-check-input" type="radio" name="class" id="pass-return" value="2">
                            <label class="form-check-label" for="pass-return">
-                              Return
+                              Second
                            </label>
                         </div>
                         <div class="form-group">
