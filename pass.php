@@ -8,7 +8,7 @@
 	}
 
 	$id = $_GET['id'];
-	$sql = "SELECT * FROM ticketgeneration WHERE barcode='$id'";
+	$sql = "SELECT * FROM passgeneration WHERE barcode='$id'";
 	$result = $conn->query($sql);
 
 
@@ -55,11 +55,11 @@
 				if($result-> num_rows > 0){	
 					while ($row = $result -> fetch_assoc()){
 						?>
-						<h1 class="text-center my-3">Ticket</h1>
+						<h1 class="text-center my-3">Pass</h1>
 						<div class="jumbotron">
 							<div class="row">
 								<div class="col-md-8">
-									<p class="lead"><b class="font-weight-bold">Ticket Number:</b> <?php echo $row['ticket_no'] ?></p>
+									<p class="lead"><b class="font-weight-bold">Pass Number:</b> <?php echo $row['ticket_no'] ?></p>
 									<p class="lead"><b class="font-weight-bold">Source:</b> <?php echo $row['source'] ?></p>
 									<p class="lead"><b class="font-weight-bold">Destination:</b> <?php echo $row['destination'] ?></p>
 									<p class="lead"><b class="font-weight-bold">Class:</b> <?php echo $row['class'] == '1' ? 'First' : 'Second' ?></p>
@@ -72,13 +72,13 @@
 								</div>
 							</div>
 							<div class="my-2 text-center">
-								<a href="<?php echo $file ?>" class="btn btn-primary" download>Download Ticket</a>
+								<a href="<?php echo $file ?>" class="btn btn-primary" download>Download Pass</a>
 							</div>
 						</div>
 			<?php
 					}
 				} else {
-					echo "<h2 class='text-center'>Sorry! Ticket Not Found.</h2>";
+					echo "<h2 class='text-center'>Sorry! Pass Not Found.</h2>";
 				}
 			?>
 
