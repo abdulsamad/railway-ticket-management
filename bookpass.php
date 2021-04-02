@@ -47,7 +47,7 @@
 			$duration = (int)$_POST['duration'];
 			$valid_from = gmdate('Y-m-d h:i:s \G\M\T');
 			$valid_to = $duration == '1' ? date('Y-m-d', strtotime("+1 months", strtotime(strftime("%Y%m%d%H%M%S")))) : date('Y-m-d', strtotime("+3 months", strtotime(strftime("%Y%m%d%H%M%S"))));
-			$uniqueTicketNo = 'Rm'.$valid_from.$_SESSION['uidorPhone'];
+			$uniqueTicketNo = 'RM'.$valid_from.$_SESSION['uidorPhone'];
 			$amount = $_SESSION['amount'];
 			
 			$sql1 = "INSERT INTO passbooking (uid, source, destination, via, class, duration, valid_from, valid_to, fare, booking_time) VALUES ('$uid', '$source', '$destination', '$via', '$class', '$duration', '$valid_from', '$valid_to', '$amount', '$valid_from')";
