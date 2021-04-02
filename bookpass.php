@@ -4,10 +4,6 @@
 	require ('razorpay-php/Razorpay.php');
   session_start();
 
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
-
 	if(!isset($_SESSION['uidorPhone'])){
 		header('Location: index.php');
 		die("Sorry! You're not logged In.");
