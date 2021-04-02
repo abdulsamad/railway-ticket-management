@@ -45,8 +45,13 @@
 			$uid = $_SESSION['uidorPhone'];
 			$currentTime = strftime("%Y%m%d%H%M%S");
 			$uniqueTicketNo = 'Rm'.$currentTime.$_SESSION['uidorPhone'];
+			$amount = $_SESSION['amount'];
 			
-			$sql = "INSERT INTO ticketbooking (uid, source, destination, via, class, type, no_of_ticket, fare, boarding_time, booking_time, barcode) VALUES ('$uid', '$source', '$destination', '$via', '$class', '$type', '$number', 255, '$boardingtime', '$currentTime', '$uniqueTicketNo')";
+			$sql1 = "INSERT INTO ticketgeneration (ticket_no, uid, source, destination, class, type, no_of_ticket, fare, boarding_time, booking_time, barcode) VALUES ('$uniqueTicketNo','$uid', '$source', '$destination', '$class', '$type', '$number', '$amount', '$boardingtime', '$currentTime', '$uniqueTicketNo')";
+
+			$conn->query($sql1);
+
+			$sql = "INSERT INTO ticketbooking (uid, source, destination, via, class, type, no_of_ticket, fare, boarding_time, booking_time, barcode) VALUES ('$uid', '$source', '$destination', '$via', '$class', '$type', '$number', '$amount', '$boardingtime', '$currentTime', '$uniqueTicketNo')";
 	
 			if ($conn->query($sql) === TRUE) {
 				$queryResult = true;
