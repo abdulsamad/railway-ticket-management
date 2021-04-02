@@ -44,7 +44,7 @@
 			$boardingtime = $_POST['boarding_time'];
 			$uid = $_SESSION['uidorPhone'];
 			$currentTime = strftime("%Y%m%d%H%M%S");
-			$uniqueTicketNo = 'Rm'.$currentTime.$_SESSION['uidorPhone'];
+			$uniqueTicketNo = 'RM'.$currentTime.$_SESSION['uidorPhone'];
 			$amount = $_SESSION['amount'];
 			
 			$sql1 = "INSERT INTO ticketgeneration (ticket_no, uid, source, destination, class, type, no_of_ticket, fare, boarding_time, booking_time, barcode) VALUES ('$uniqueTicketNo','$uid', '$source', '$destination', '$class', '$type', '$number', '$amount', '$boardingtime', '$currentTime', '$uniqueTicketNo')";
