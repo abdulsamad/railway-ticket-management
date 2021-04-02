@@ -35,6 +35,7 @@
 	];
 
 	$json = json_encode($data);
+   $_SESSION['amount'] = $amount;
 ?>
 
 <!DOCTYPE html>
@@ -231,14 +232,14 @@
                         </div>
                         <p>Duration</p>
                         <div class="form-check form-check-inline">
-                           <input class="form-check-input" type="radio" name="duration" id="single" value="1" checked>
-                           <label class="form-check-label" for="single">
+                           <input class="form-check-input" type="radio" name="duration" id="monthly" value="1" checked>
+                           <label class="form-check-label" for="monthly">
                               Monthly
                            </label>
                         </div>
                         <div class="form-check form-check-inline">
-                           <input class="form-check-input" type="radio" name="duration" id="return" value="2">
-                           <label class="form-check-label" for="return">
+                           <input class="form-check-input" type="radio" name="duration" id="quaterly" value="2">
+                           <label class="form-check-label" for="quaterly">
                               Quaterly
                            </label>
                         </div>
