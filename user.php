@@ -35,7 +35,7 @@
 	];
 
 	$json = json_encode($data);
-   $_SESSION['amount'] = $amount;
+   $_SESSION['amount'] = $amount / 100;
 ?>
 
 <!DOCTYPE html>
