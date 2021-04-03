@@ -8,7 +8,7 @@
 		$password = stripslashes($_POST['password']);
 		$password = mysqli_real_escape_string($conn,$password);
 
-		$query = "SELECT * FROM `users` WHERE uid='$uidorPhone' OR phone='$uidorPhone'
+		$query = "SELECT * FROM `admin` WHERE uid='$uidorPhone' OR phone='$uidorPhone'
 		and password='".md5($password)."'";
 		$result = mysqli_query($conn, $query) or die(mysql_error());
 		$rows = mysqli_num_rows($result);
