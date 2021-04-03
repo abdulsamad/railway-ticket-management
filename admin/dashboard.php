@@ -157,7 +157,7 @@
 												$file = '../temp/'.$row1['ticket_no'].'.png';
 												QRcode::png($row1['ticket_no'], $file, 'H', 10, 2);
 										?>
-										<img height="24" width="24" src="../temp/<?php echo $row['ticket_no'] ?>.png" alt="Ticket QR Code">
+										<img height="24" width="24" src="../temp/<?php echo $row1['ticket_no'] ?>.png" alt="Ticket QR Code">
 									</td>
 								</tr>
 						<?php
