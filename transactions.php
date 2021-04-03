@@ -66,7 +66,7 @@
 		</div>
 
 		<div class="container my-5">
-			<div>
+			<div id="ticket-table">
 					<?php 
 						if($result-> num_rows > 0 ){	
 					?>
