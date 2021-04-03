@@ -12,14 +12,14 @@
 
 		$sql=mysqli_query($conn, "SELECT * FROM users WHERE uid='$uid' OR phone='$uid'");
 		
-	if(mysqli_num_rows($sql)>=1){
-    echo "<div class='alert alert-danger mb-0' role='alert'>
-						Sorry! User with same UID or Phone already exists.
-					</div>";
-	} else {
-		$query = "INSERT into `users` (uid, password, phone, trn_date) VALUES ('$uid', '".md5($password)."', '$phone', '$trn_date')";
-		$result = mysqli_query($conn, $query);
-  }
+		if(mysqli_num_rows($sql)>=1){
+			echo "<div class='alert alert-danger mb-0' role='alert'>
+							Sorry! User with same UID or Phone already exists.
+						</div>";
+		} else {
+			$query = "INSERT into `users` (uid, password, phone, trn_date) VALUES ('$uid', '".md5($password)."', '$phone', '$trn_date')";
+			$result = mysqli_query($conn, $query);
+		}
 	}
 ?>
 
