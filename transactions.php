@@ -59,7 +59,7 @@
 						</label>
 					</div>
 					<div class="mt-4">
-						<button type="submit" class="btn btn-primary" href="#" role="button">Transaction</button>
+						<button type="submit" class="btn btn-primary" role="button">Transaction</button>
 					</div>
 				</form>
 			</div>
@@ -67,99 +67,99 @@
 
 		<div class="container my-5">
 			<div id="ticket-table">
-					<?php 
-						if($result-> num_rows > 0 ){	
-					?>
-						<table class="table table-striped table-bordered table-responsive text-center">
-							<thead class="thead-dark">
+				<?php 
+					if($result-> num_rows > 0 ){	
+				?>
+					<table class="table table-striped table-bordered table-responsive text-center">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">Uid</th>
+								<th scope="col">Ticket No</th>
+								<th scope="col">Source</th>
+								<th scope="col">Destination</th>
+								<th scope="col">Class</th>
+								<th scope="col">Type</th>
+								<th scope="col">No. of Tickets</th>
+								<th scope="col">Fare</th>
+								<th scope="col">Boarding Time</th>
+								<th scope="col">Booking Time</th>
+								<th scope="col">QR Code</th>
+							</tr>
+						</thead>
+						<tbody> 
+					<?php
+						while ($row = $result -> fetch_assoc()){ ?>
 								<tr>
-									<th scope="col">Uid</th>
-									<th scope="col">Ticket No</th>
-									<th scope="col">Source</th>
-									<th scope="col">Destination</th>
-									<th scope="col">Class</th>
-									<th scope="col">Type</th>
-									<th scope="col">No. of Tickets</th>
-									<th scope="col">Fare</th>
-									<th scope="col">Boarding Time</th>
-									<th scope="col">Booking Time</th>
-									<th scope="col">QR Code</th>
+									<td class="table-content"><?php echo $row['uid'] ?></td>
+									<td class="table-content"><?php echo $row['ticket_no'] ?></td>
+									<td class="table-content"><?php echo $row['source'] ?></td>
+									<td class="table-content"><?php echo $row['destination'] ?></td>
+									<td class="table-content"><?php echo $row['class'] == '1' ? 'First' : 'Second' ?></td>
+									<td class="table-content"><?php echo $row['type'] == '1' ? 'Single' : 'Return' ?></td>
+									<td class="table-content"><?php echo $row['no_of_ticket'] ?></td>
+									<td class="table-content"><?php echo $row['fare'] ?></td>
+									<td class="table-content"><?php echo $row['boarding_time'] ?></td>
+									<td class="table-content"><?php echo $row['booking_time'] ?></td>
+									<td class="table-content">
+										<img src="https://satyr.io/60x60/1" alt="">
+									</td>
 								</tr>
-							</thead>
-							<tbody> 
 						<?php
-							while ($row = $result -> fetch_assoc()){ ?>
-									<tr>
-										<td class="table-content"><?php echo $row['uid'] ?></td>
-										<td class="table-content"><?php echo $row['ticket_no'] ?></td>
-										<td class="table-content"><?php echo $row['source'] ?></td>
-										<td class="table-content"><?php echo $row['destination'] ?></td>
-										<td class="table-content"><?php echo $row['class'] == '1' ? 'First' : 'Second' ?></td>
-										<td class="table-content"><?php echo $row['type'] == '1' ? 'Single' : 'Return' ?></td>
-										<td class="table-content"><?php echo $row['no_of_ticket'] ?></td>
-										<td class="table-content"><?php echo $row['fare'] ?></td>
-										<td class="table-content"><?php echo $row['boarding_time'] ?></td>
-										<td class="table-content"><?php echo $row['booking_time'] ?></td>
-										<td class="table-content">
-											<img src="https://satyr.io/60x60/1" alt="">
-										</td>
-									</tr>
-							<?php
+						}
+						?>
+						</tbody>
+					</table>
+					<?php
+							} else {
+								echo "<h2 class='text-center'>Sorry! No Data Available.</h2>";
 							}
-							?>
-							</tbody>
-						</table>
-						<?php
-								} else {
-									echo "<h2 class='text-center'>Sorry! No Data Available.</h2>";
-								}
-						?>	
-				</div>
-				<div id="pass-table">
-					<?php 
-						if($result1-> num_rows > 0){	
-					?>
-						<table class="table table-striped table-bordered table-responsive text-center">
-							<thead class="thead-dark">
+					?>	
+			</div>
+			<div id="pass-table">
+				<?php 
+					if($result1-> num_rows > 0){	
+				?>
+					<table class="table table-striped table-bordered table-responsive text-center">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">Uid</th>
+								<th scope="col">Ticket No</th>
+								<th scope="col">Source</th>
+								<th scope="col">Destination</th>
+								<th scope="col">Class</th>
+								<th scope="col">Fare</th>
+								<th scope="col">Valid Till</th>
+								<th scope="col">Booking Time</th>
+								<th scope="col">QR Code</th>
+							</tr>
+						</thead>
+						<tbody> 
+					<?php
+						while ($row1 = $result1 -> fetch_assoc()){ ?>
 								<tr>
-									<th scope="col">Uid</th>
-									<th scope="col">Ticket No</th>
-									<th scope="col">Source</th>
-									<th scope="col">Destination</th>
-									<th scope="col">Class</th>
-									<th scope="col">Fare</th>
-									<th scope="col">Valid Till</th>
-									<th scope="col">Booking Time</th>
-									<th scope="col">QR Code</th>
+									<td class="table-content"><?php echo $row1['uid'] ?></td>
+									<td class="table-content"><?php echo $row1['ticket_no'] ?></td>
+									<td class="table-content"><?php echo $row1['source'] ?></td>
+									<td class="table-content"><?php echo $row1['destination'] ?></td>
+									<td class="table-content"><?php echo $row1['class'] == '1' ? 'First' : 'Second' ?></td>
+									<td class="table-content"><?php echo $row1['fare'] ?></td>
+									<td class="table-content"><?php echo $row1['valid_to'] ?></td>
+									<td class="table-content"><?php echo $row1['booking_time'] ?></td>
+									<td class="table-content">
+										<img src="https://satyr.io/60x60/1" alt="">
+									</td>
 								</tr>
-							</thead>
-							<tbody> 
 						<?php
-							while ($row1 = $result1 -> fetch_assoc()){ ?>
-									<tr>
-										<td class="table-content"><?php echo $row1['uid'] ?></td>
-										<td class="table-content"><?php echo $row1['ticket_no'] ?></td>
-										<td class="table-content"><?php echo $row1['source'] ?></td>
-										<td class="table-content"><?php echo $row1['destination'] ?></td>
-										<td class="table-content"><?php echo $row1['class'] == '1' ? 'First' : 'Second' ?></td>
-										<td class="table-content"><?php echo $row1['fare'] ?></td>
-										<td class="table-content"><?php echo $row1['valid_to'] ?></td>
-										<td class="table-content"><?php echo $row1['booking_time'] ?></td>
-										<td class="table-content">
-											<img src="https://satyr.io/60x60/1" alt="">
-										</td>
-									</tr>
-							<?php
+						}
+						?>
+						</tbody>
+					</table>
+					<?php
+							} else {
+								echo "<h2 class='text-center'>Sorry! No Data Available.</h2>";
 							}
-							?>
-							</tbody>
-						</table>
-						<?php
-								} else {
-									echo "<h2 class='text-center'>Sorry! No Data Available.</h2>";
-								}
-						?>	
-				</div>
+					?>	
+			</div>
 		</div>
 	</div>
 
