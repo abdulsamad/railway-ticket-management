@@ -43,15 +43,16 @@
 			$class = (int)$_POST['class'];
 			$boardingtime = $_POST['boarding_time'];
 			$uid = $_SESSION['uidorPhone'];
-			$currentTime = strftime("%Y%m%d%H%M%S");
-			$uniqueTicketNo = 'RM'.$currentTime.$_SESSION['uidorPhone'];
+			$currentTimeDate = date("Y-m-d H:i:s");
+			$currentTimeStamp = strftime("%Y%m%d%H%M%S");
+			$uniqueTicketNo = 'RM'.$currentTimeStamp.$_SESSION['uidorPhone'];
 			$amount = $_SESSION['amount'];
 			
-			$sql1 = "INSERT INTO ticketgeneration (ticket_no, uid, source, destination, class, type, no_of_ticket, fare, boarding_time, booking_time, barcode) VALUES ('$uniqueTicketNo','$uid', '$source', '$destination', '$class', '$type', '$number', '$amount', '$boardingtime', '$currentTime', '$uniqueTicketNo')";
+			$sql1 = "INSERT INTO ticketgeneration (ticket_no, uid, source, destination, class, type, no_of_ticket, fare, boarding_time, booking_time, barcode) VALUES ('$uniqueTicketNo','$uid', '$source', '$destination', '$class', '$type', '$number', '$amount', '$boardingtime', '$currentTimeDate', '$uniqueTicketNo')";
 
 			$conn->query($sql1);
 
-			$sql = "INSERT INTO ticketbooking (uid, source, destination, via, class, type, no_of_ticket, fare, boarding_time, booking_time, barcode) VALUES ('$uid', '$source', '$destination', '$via', '$class', '$type', '$number', '$amount', '$boardingtime', '$currentTime', '$uniqueTicketNo')";
+			$sql = "INSERT INTO ticketbooking (uid, source, destination, via, class, type, no_of_ticket, fare, boarding_time, booking_time, barcode) VALUES ('$uid', '$source', '$destination', '$via', '$class', '$type', '$number', '$amount', '$boardingtime', '$currentTimeDate', '$uniqueTicketNo')";
 	
 			if ($conn->query($sql) === TRUE) {
 				$queryResult = true;

@@ -41,7 +41,7 @@
 			$via = $_POST['via'];
 			$class = (int)$_POST['class'];
 			$duration = (int)$_POST['duration'];
-			$valid_from = gmdate('Y-m-d h:i:s \G\M\T');
+			$valid_from = date("Y-m-d H:i:s");
 			$valid_to = $duration == '1' ? date('Y-m-d', strtotime("+1 months", strtotime(strftime("%Y%m%d%H%M%S")))) : date('Y-m-d', strtotime("+3 months", strtotime(strftime("%Y%m%d%H%M%S"))));
 			$currentTime = strftime("%Y%m%d%H%M%S");
 			$uniqueTicketNo = 'RM'.$currentTime.$_SESSION['uidorPhone'];
