@@ -9,8 +9,6 @@
 	$sql1 = "SELECT * FROM passgeneration WHERE uid='$uid'";
 	$result1 = $conn->query($sql1);
 
-	$type = $_POST['filter'] || 'normal';
-
 ?>
 
 <!DOCTYPE html>
@@ -68,10 +66,11 @@
 		</div>
 
 		<div class="container my-5">
+			<div>
 					<?php 
 						if($result-> num_rows > 0 ){	
 					?>
-						<table class="table table-striped table-bordered table-responsive text-center" id="ticket-table">
+						<table class="table table-striped table-bordered table-responsive text-center">
 							<thead class="thead-dark">
 								<tr>
 									<th scope="col">Uid</th>
@@ -115,10 +114,12 @@
 									echo "<h2 class='text-center'>Sorry! No Data Available.</h2>";
 								}
 						?>	
+				</div>
+				<div id="pass-table">
 					<?php 
 						if($result1-> num_rows > 0){	
 					?>
-						<table class="table table-striped table-bordered table-responsive text-center" id="pass-table">
+						<table class="table table-striped table-bordered table-responsive text-center">
 							<thead class="thead-dark">
 								<tr>
 									<th scope="col">Uid</th>
@@ -158,7 +159,7 @@
 									echo "<h2 class='text-center'>Sorry! No Data Available.</h2>";
 								}
 						?>	
-						
+				</div>
 		</div>
 	</div>
 
