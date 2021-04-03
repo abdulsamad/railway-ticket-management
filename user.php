@@ -87,7 +87,7 @@
                   <li class="nav-item">
                      <a class="nav-link text-light" href="#feature">Features</a>
                   </li>
-                  <li class="nav-item ml-5">
+                  <li class="nav-item ml-lg-5">
                      <a class="nav-link text-light" href="logout.php">
                      <svg fill="#f1f1f1" width="24" height="24" viewBox="0 0 24 24"><path d="M16 9v-4l8 7-8 7v-4h-8v-6h8zm-16-7v20h14v-2h-12v-16h12v-2h-14z"/></svg>
                      Logout</a>
