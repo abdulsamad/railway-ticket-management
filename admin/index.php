@@ -2,19 +2,20 @@
 	require ("../db/conn.php");
 	session_start();
 
-	if (isset($_POST['uidorPhone']) && isset($_POST['password'])){
-		$uidorPhone = stripslashes($_POST['uidorPhone']);
-		$uidorPhone = mysqli_real_escape_string($conn,$uidorPhone); 
+	if (isset($_POST['adminUidorPhone']) && isset($_POST['password'])){
+		$adminUidorPhone = stripslashes($_POST['adminUidorPhone']);
+		$adminUidorPhone = mysqli_real_escape_string($conn,$adminUidorPhone); 
 		$password = stripslashes($_POST['password']);
 		$password = mysqli_real_escape_string($conn,$password);
-
-		$query = "SELECT * FROM `admin` WHERE uid='$uidorPhone' OR phone='$uidorPhone'
+		
+		$query = "SELECT * FROM `admin` WHERE uid='$adminUidorPhone' OR phone='$adminUidorPhone'
 		and password='".md5($password)."'";
 		$result = mysqli_query($conn, $query) or die(mysql_error());
 		$rows = mysqli_num_rows($result);
 
 		if ($rows == 1){
 			header("Location: dashboard.php");
+			$_SESSION['adminUidorPhone']	= $adminUidorPhone;
 		}
 	}
 ?>
@@ -64,7 +65,7 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text">🆔</span>
 					</div>
-					<input type="text" name="uidorPhone" class="form-control" placeholder="UID or Phone">
+					<input type="text" name="adminUidorPhone" class="form-control" placeholder="UID or Phone">
 				</div>
 				<div class="input-group flex-nowrap my-4">
 					<div class="input-group-prepend">
