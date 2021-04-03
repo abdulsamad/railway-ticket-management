@@ -10,10 +10,10 @@
 		$password = mysqli_real_escape_string($conn, $password);
 		$trn_date = date("Y-m-d H:i:s");
 
-		$sql=mysql_query("SELECT FROM users (username, password, email) WHERE username=$fusername");
+		$sql=mysqli_query($conn, "SELECT * FROM users WHERE uid='$uid' OR phone='$uid'");
 		
-	if(mysql_num_rows($sql)>=1){
-    echo"name already exists";
+	if(mysqli_num_rows($sql)>=1){
+    echo"user already exists";
 	} else {
 		$query = "INSERT into `users` (uid, password, phone, trn_date) VALUES ('$uid', '".md5($password)."', '$phone', '$trn_date')";
 		$result = mysqli_query($conn, $query);
