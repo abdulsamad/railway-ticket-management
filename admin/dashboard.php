@@ -1,5 +1,6 @@
 <?php
 	require ("../db/conn.php");
+	require ("../phpqrcode/qrlib.php");
 	session_start();
 
 	$adminId = $_SESSION['adminUidorPhone'];
@@ -103,7 +104,11 @@
 									<td class="table-content"><?php echo $row['boarding_time'] ?></td>
 									<td class="table-content"><?php echo $row['booking_time'] ?></td>
 									<td class="table-content">
-										<img src="https://satyr.io/60x60/1" alt="">
+										<?php
+											$file = '../temp/'.$row['ticket_no'].'.png';
+											QRcode::png($row['ticket_no'], $file, 'H', 10, 2);
+										?>
+										<img height="24" width="24" src="../temp/<?php echo $row['ticket_no'] ?>.png" alt="Ticket QR Code">
 									</td>
 								</tr>
 						<?php
@@ -148,7 +153,11 @@
 									<td class="table-content"><?php echo $row1['valid_to'] ?></td>
 									<td class="table-content"><?php echo $row1['booking_time'] ?></td>
 									<td class="table-content">
-										<img src="https://satyr.io/60x60/1" alt="">
+										<?php
+												$file = '../temp/'.$row1['ticket_no'].'.png';
+												QRcode::png($row1['ticket_no'], $file, 'H', 10, 2);
+										?>
+										<img height="24" width="24" src="../temp/<?php echo $row['ticket_no'] ?>.png" alt="Ticket QR Code">
 									</td>
 								</tr>
 						<?php
