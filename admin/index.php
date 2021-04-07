@@ -2,6 +2,11 @@
 	require ("../db/conn.php");
 	session_start();
 
+	if(isset($_SESSION['adminUidorPhone'])){
+		header('Location: dashboard.php');
+		die();
+	}
+
 	if (isset($_POST['adminUidorPhone']) && isset($_POST['password'])){
 		$adminUidorPhone = stripslashes($_POST['adminUidorPhone']);
 		$adminUidorPhone = mysqli_real_escape_string($conn,$adminUidorPhone); 
