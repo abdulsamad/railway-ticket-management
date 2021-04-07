@@ -69,13 +69,13 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text">🆔</span>
 					</div>
-					<input type="text" name="uidorPhone" class="form-control" placeholder="UID or Phone">
+					<input type="text" name="uidorPhone" class="form-control" placeholder="UID or Phone" required>
 				</div>
 				<div class="input-group flex-nowrap my-4">
 					<div class="input-group-prepend">
 						<span class="input-group-text">🔒</span>
 					</div>
-					<input type="password" name="password" class="form-control" placeholder="Password">
+					<input type="password" name="password" class="form-control" placeholder="Password" required>
 				</div>
 				<div class="mb-3">
 					<p class="text-muted">Don't have a account yet. <a href="register.php">Register
