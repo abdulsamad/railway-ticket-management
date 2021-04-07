@@ -1,3 +1,3 @@
-## Railway Ticket Mangement System (Under Development :construction:)
+## Railway Ticket Mangement System
 
-> Basic CRUD application for php practice
+Basic CRUD application with Payment Gateway
