@@ -17,7 +17,7 @@
 	$error = "Payment Failed";
 
 	if (empty($_POST['razorpay_payment_id']) === false){
-			$api = new Api($keyId, $keySecret);
+			$api = new Api($RazorpayKeyId, $RazorpayKeySecret);
 
 			try {
 					$attributes = array(
