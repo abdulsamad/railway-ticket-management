@@ -11,9 +11,9 @@
 		$uidorPhone = mysqli_real_escape_string($conn,$uidorPhone); 
 		$password = stripslashes($_POST['password']);
 		$password = mysqli_real_escape_string($conn,$password);
+		$password = md5($password);
 
-		$query = "SELECT * FROM `users` WHERE uid='$uidorPhone' OR phone='$uidorPhone'
-		and password='".md5($password)."'";
+		$query = "SELECT * FROM `users` WHERE password='$password' AND uid='$uidorPhone' OR phone='$uidorPhone'";
 		$result = mysqli_query($conn, $query) or die(mysql_error());
 		$rows = mysqli_num_rows($result);
 
