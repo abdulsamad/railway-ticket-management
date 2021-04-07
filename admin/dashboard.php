@@ -3,9 +3,7 @@
 	require ("../phpqrcode/qrlib.php");
 	session_start();
 
-	$adminId = $_SESSION['adminUidorPhone'];
-
-	if(!isset($adminId)){
+	if(!isset($_SESSION['adminUidorPhone'])){
 		header('Location: index.php');
 		die();
 	}
