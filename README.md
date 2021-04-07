@@ -9,3 +9,13 @@ Basic CRUD application with [Razorpay](https://razorpay.com) Payment Gateway
 ### Admin Login: 
 	- UID: admin
 	- Password: admin
+
+### Screenshots 
+
+![RailMumbai Screenshot](./screenshots/RailMumbai-Registration.png)
+
+![RailMumbai Screenshot](./screenshots/RailMumbai-LogIn.png)
+
+![RailMumbai Screenshot](./screenshots/RailMumbai.png)
+
+![RailMumbai Screenshot](./screenshots/RailMumbai-Ticket.png)
