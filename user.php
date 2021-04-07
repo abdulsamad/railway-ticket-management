@@ -10,7 +10,7 @@
 
 	use Razorpay\Api\Api;
    
-	$api = new Api($keyId, $keySecret);
+	$api = new Api($RazorpayKeyId, $RazorpayKeySecret);
 	$orderData = [
 		'receipt'         => 3456,
 		'amount'          => mt_rand(10, 1000) * 100,
@@ -22,7 +22,7 @@
 	$_SESSION['razorpay_order_id'] = $razorpayOrderId;
 	$displayAmount = $amount = $orderData['amount'];
 	$data = [
-		"key"               => $keyId,
+		"key"               => $RazorpayKeyId,
 		"amount"            => $amount,
 		"name"              => "Rail Mumbai",
 		"description"       => "Dummy Mumbai railway ticket booking site.",
