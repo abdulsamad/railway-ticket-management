@@ -74,19 +74,19 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text">🆔</span>
 					</div>
-					<input type="text" name="uid" class="form-control" placeholder="UID">
+					<input type="text" name="uid" class="form-control" placeholder="UID" required>
 				</div>
 				<div class="input-group flex-nowrap my-4">
 					<div class="input-group-prepend">
 						<span class="input-group-text">📱</span>
 					</div>
-					<input type="number" name="phone" class="form-control" placeholder="Phone">
+					<input type="number" name="phone" class="form-control" placeholder="Phone" required>
 				</div>
 				<div class="input-group flex-nowrap my-4">
 					<div class="input-group-prepend">
 						<span class="input-group-text">🔒</span>
 					</div>
-					<input type="password" name="password" class="form-control" placeholder="Password">
+					<input type="password" name="password" class="form-control" placeholder="Password" required>
 				</div>
 				<div class="mb-3">
 					<p class="text-muted">Already have an account. <a href="index.php">LogIn Now</a></p>
