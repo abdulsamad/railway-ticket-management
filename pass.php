@@ -12,7 +12,7 @@
 	$result = $conn->query($sql);
 
 
-	if($result-> num_rows > 0){
+	if($result->num_rows > 0){
 		$path = 'temp/';
 		$file = $path.$id.'.png';
 		QRcode::png($id, $file, 'L', 10, 2);
