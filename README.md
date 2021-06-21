@@ -1,6 +1,6 @@
 ## Railway Ticket Mangement System
 
-Simple Railway Ticket Management System with [Razorpay](https://razorpay.com) Payment Gateway in PHP
+Simple Railway Ticket Management System with [Razorpay](https://razorpay.com) Payment Gateway in PHP/MySQL
 
 ### Test User Login: 
 	- UID: test
